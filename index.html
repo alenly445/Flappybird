@@ -156,8 +156,10 @@
 </head>
 <body>
     <div id="game-container">
+        <!-- 游戏画布：动态绘制小鸟、管道 -->
         <canvas id="game-canvas" width="400" height="600"></canvas>
-        
+
+        <!-- UI 层：得分、开始/结束界面 -->
         <div id="ui-overlay">
             <div id="score-display">0</div>
             
@@ -173,7 +175,8 @@
                 <button id="restart-btn" class="btn">重新开始</button>
             </div>
         </div>
-        
+
+        <!-- 视觉装饰：地面、云朵 -->
         <div class="ground"></div>
         <div class="cloud" style="width: 80px; height: 40px; top: 80px; left: 50px;"></div>
         <div class="cloud" style="width: 60px; height: 60px; top: 60px; left: 70px;"></div>
