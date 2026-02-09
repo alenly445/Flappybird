@@ -45,12 +45,10 @@ const bird = {
         this.velocity += CONFIG.gravity;
         this.y += this.velocity;
         
-        // 碰撞地面 → 游戏结束
+        // 碰撞地面 → 反弹
         if (this.y + this.height / 2 >= canvas.height - CONFIG.groundHeight) {
             this.y = canvas.height - CONFIG.groundHeight - this.height / 2;
-            if (gameState === GAME_STATE.PLAYING) {
-                gameOver(); // gameOver函数在game-logic.js中定义
-            }
+            this.velocity = -Math.abs(this.velocity) * CONFIG.bounceFactor;
         }
         
         // 碰撞天花板 → 停止向上

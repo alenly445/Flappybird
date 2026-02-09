@@ -62,9 +62,35 @@ function gameLoop() {
             if (!pipes[i].update()) {
                 pipes.splice(i, 1);
             } 
-            // 碰撞检测 → 游戏结束
-            else if (pipes[i].checkCollision()) {
-                gameOver();
+            else{
+                const pipe=pipes[i];
+                const pipeLeft=pipe.x;
+                const pipeRight=pipe.x+pipe.width;
+                const gapTop=pipe.topHeight;
+                const gapBottom=canvas.height - CONFIG.groundHeight - pipe.bottomHeight;
+                const birdLeft=bird.x-bird.width/2;
+                const birdRight=bird.x+bird.width/2;
+                const birdTop=bird.y-bird.height/2;
+                const birdBottom=bird.y+bird.height/2;
+
+                const isBirdInPipeX = birdRight > pipeLeft && birdLeft < pipeRight;
+                if(isBirdInPipeX){
+                    const isBirdInPipeGap = birdBottom > gapTop && birdTop < gapBottom;
+
+                    if(!isBirdInPipeGap){
+                        gameOver();
+                    }else{
+                        if(birdTop <= gapTop){
+                            bird.y = gapTop + bird.height / 2;
+                            bird.velocity = Math.abs(bird.velocity) *CONFIG.bounceFactor;
+                        }
+                        else if(birdBottom >= gapBottom){
+                            bird.y = gapBottom - bird.height /2;
+                            bird.velocity = -Math.abs(bird.velocity)* CONFIG.bounceFactor;
+                        }
+                    }
+
+                }
             }
         }
     }
