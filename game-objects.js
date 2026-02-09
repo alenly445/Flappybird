@@ -51,10 +51,10 @@ const bird = {
             this.velocity = -Math.abs(this.velocity) * CONFIG.bounceFactor;
         }
         
-        // 碰撞天花板 → 停止向上
+        // 碰撞天花板 → 反弹
         if (this.y - this.height / 2 <= 0) {
             this.y = this.height / 2;
-            this.velocity = 0;
+            this.velocity = Math.abs(this.velocity) * CONFIG.bounceFactor;
         }
     },
     

@@ -13,7 +13,7 @@ const CONFIG = {
     pipeGap: 150,         // 管道上下间隙
     pipeFrequency: 120,   // 生成管道的帧数间隔
     groundHeight: 100,    // 地面高度
-    birdSize: 30          // 小鸟尺寸
+    birdSize: 30,          // 小鸟尺寸
     bounceFactor: 0.8     // 反弹系数（0-1，越小反弹越弱）
 };
 
